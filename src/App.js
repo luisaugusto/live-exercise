@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
 
-function App() {
+const fetchImage = (id) => {
+  const url = `https://jsonplaceholder.typicode.com/photos/${id}`
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      fetch(url)
+        .then(resp => resp.json())
+        .then(resp => resolve(resp))
+    }, 200)
+  })
+}
+
+const App = () => {
+  const [idx, setIdx] = useState(1)
+  const [image, setImage] = useState(null)
+  
+  useEffect(() => {
+    let allowUpdates = true
+    
+    fetchImage(`https://jsonplaceholder.typicode.com/photos/:id`)
+      .then(res => {
+        allowUpdates && setImage(res)
+      }) 
+    
+    return () => {
+      allowUpdates = false
+    }
+  },[idx])
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <div className="container">
+      <button className="btn" type="button" onClick={() => setIdx(state => state - 1)}>Prev</button>
+      <div className="image-holder">
+        { image && <img src={image.url} /> }
+      </div>
+      <button className="btn" type="button" onClick={() => setIdx(state => state + 1)}>Next</button>
+     </div>
+  )
 }
 
 export default App;
