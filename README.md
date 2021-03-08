@@ -1,3 +1,13 @@
+# Live Exercise Checklist
+
+- [ ] Create a new file called `App.js` as a functional component that mimics the functionality of the `AppClassComponent` and uses the `useState` and `useEffect` hooks.
+- [ ] Set up the new `App` component with `useReducer` and replace any calls to `useState` with it.
+- [ ] Create a `Button` component that takes an `onClick` and `text` prop for interacting with the carousel
+- [ ] Set up a React router so that each image in the carousel has its own unique URL.
+- [ ] Create a redux store to save image urls returned from the fetch. If the image ID is in the store, then use that value instead of fetching from the API.
+- [ ] Write a test to make sure the new router links go to the correct URL
+- [ ] Use `styled-components` to create styles for the buttons and the image container
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
