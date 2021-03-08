@@ -1,8 +1,7 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { shallow } from 'enzyme';
+import AppClassComponent from "./AppClassComponent";
 
 test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const component = shallow(<AppClassComponent />);
+  expect(component).toHaveLength(1)
 });
