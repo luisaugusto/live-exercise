@@ -6,7 +6,6 @@ class App extends Component {
         this.state = {
             index: 1,
             image: null,
-            allowUpdates: true
         }
     }
 
@@ -23,21 +22,15 @@ class App extends Component {
 
     componentDidMount() {
         this.fetchImage().then(res => {
-            this.state.allowUpdates && this.setState(() => ({image: res}))
+            this.setState(() => ({image: res}))
         });
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.state.index === prevState.index) return;
         this.fetchImage().then(res => {
-            this.state.allowUpdates && this.setState(() => ({image: res}))
+            this.setState(() => ({image: res}))
         });
-    }
-
-    componentWillUnmount() {
-        this.setState(() => ({
-            allowUpdates: false
-        }))
     }
 
     render() {
