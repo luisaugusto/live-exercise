@@ -1,6 +1,7 @@
 # Live Exercise Checklist
 
 - [ ] Create a new file called `App.js` as a functional component that mimics the functionality of the `AppClassComponent` and uses the `useState` and `useEffect` hooks.
+- [ ] Currently, when you click on the next or previous buttons in rapid succession, it will load multiple images from previous fetch requests. Create a cleanup function that will prevent the image from being loaded if it wasn't the most recent fetch request.
 - [ ] Set up the new `App` component with `useReducer` and replace any calls to `useState` with it.
 - [ ] Create a `Button` component that takes an `onClick` and `text` prop for interacting with the carousel
 - [ ] Set up a React router so that each image in the carousel has its own unique URL.
